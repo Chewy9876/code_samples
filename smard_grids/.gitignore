@@ -36,7 +36,8 @@
 ehthumbs.db
 Thumbs.db
 
-# pyc stuff
+# pyc stuff #
+#############
 *.pyo
 *.pyc
 *~

@@ -1,37 +1,3 @@
-'''
-import dash
-from dash import dcc, html, callback, Output, Input
-import plotly.express as px
-import dash_bootstrap_components as dbc
-
-dash.register_page(__name__, name='Home') # '/' is home page
-
-layout = html.Div(
-    [
-        dbc.Row(
-            [
-                dbc.Col(
-                    [
-                        dcc.Markdown('test string 1',
-                                     id='test_str_1')
-                    ], xs=10, sm=10, md=8, lg=4, xl=4, xxl=4
-                )
-            ]
-        ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    [
-                        dcc.Markdown('test string 2',
-                                     id='test_str_2')
-                    ], xs=10, sm=10, md=8, lg=4, xl=4, xxl=4
-                )
-            ]
-        )
-    ]
-)
-'''
-
 import dash
 from dash import html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc
@@ -97,10 +63,7 @@ selection_vectors = [
     str(file_names_dict['filenames_raw']['prefix_gas_storage_unity']),
     str(file_names_dict['filenames_raw']['prefix_gas_consumer_unity']),
 ]
-#df_installed_power = cf.load_installed_power_as_df()
-#df_con_gen = cf.load_historical_gen_and_con_in_one_df()
-#selection_vectors = list(df_installed_power.columns)
-#selection_vectors = ['all'] + selection_vectors
+
 layout = html.Div(
     [
         dbc.Row(
@@ -153,13 +116,6 @@ def update_energy_vector_selected(input_value):
                                 )
     page_content = html.Div(children=[
             html.Div(dcc.Graph(id='maps_installed_power_raw', figure=fig_1)),
-            #html.Div(dcc.Graph(id='historical_time_serie_amounts_per_year', figure=fig_2), style={'width': '49%', 'display': 'inline-block'}),
-            #html.Div(dcc.Graph(id='historical_time_serie_amounts_per_year_and_month', figure=fig_3), style={'width': '49%', 'display': 'inline-block'}),
-            #html.Div(dcc.Graph(id='historical_time_serie_amounts_per_week', figure=fig_5), style={'width': '49%', 'display': 'inline-block'}),
-            #html.Div(dcc.Graph(id='historical_time_serie_amounts_per_day', figure=fig_4), style={'width': '49%', 'display': 'inline-block'}),
-            #html.Div(dcc.Graph(id='heatmap_hour_weekday', figure=fig_6), style={'width': '49%', 'display': 'inline-block'}),
-            #html.Div(dcc.Graph(id='heatmap_hour_month', figure=fig_7), style={'width': '49%', 'display': 'inline-block'}),
-            #html.Div(dcc.Graph(id='ldc_multiple', figure=fig_8), style={'width': '49%', 'display': 'inline-block'}),
         ])
         
     return page_content

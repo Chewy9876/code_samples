@@ -1,37 +1,3 @@
-'''
-import dash
-from dash import dcc, html, callback, Output, Input
-import plotly.express as px
-import dash_bootstrap_components as dbc
-
-dash.register_page(__name__, name='Home') # '/' is home page
-
-layout = html.Div(
-    [
-        dbc.Row(
-            [
-                dbc.Col(
-                    [
-                        dcc.Markdown('test string 1',
-                                     id='test_str_1')
-                    ], xs=10, sm=10, md=8, lg=4, xl=4, xxl=4
-                )
-            ]
-        ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    [
-                        dcc.Markdown('test string 2',
-                                     id='test_str_2')
-                    ], xs=10, sm=10, md=8, lg=4, xl=4, xxl=4
-                )
-            ]
-        )
-    ]
-)
-'''
-
 import dash
 from dash import html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc

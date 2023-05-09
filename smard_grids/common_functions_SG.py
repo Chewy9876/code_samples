@@ -312,6 +312,33 @@ def add_operator_information(prefix_data_type):
     except:
         return 'some error during return'
 
+def load_unity_extractions_from_MaStR_with_operator_infos(prefix_data_type):
+    '''
+    load csv files from 02_csv_static, df_operator_joined files should work also but not tested
+    '''
+    os.chdir(path_dict['static_input'])
+    # load CSV
+    filename_import_part_1 = prefix_data_type
+    filename_import_part_2 = file_names_dict['filenames_csv_exports_MaStR']['dataframe_unity_file_name_sufix_with_operator']
+    filename_import = f'{filename_import_part_1}{filename_import_part_2}'
+    # read data
+    try:
+        with open(str(filename_import)) as csv_file:
+            unity_extractions_from_MaStR = pd.read_csv(csv_file, encoding='utf-8', sep=",")
+    except UnicodeDecodeError:
+        with open(str(filename_import)) as csv_file:
+            #unity_extractions_from_MaStR = pd.read_csv(csv_file, encoding='utf-8', sep=",")
+            #unity_extractions_from_MaStR = pd.read_csv(csv_file, encoding='cp273', sep=",")
+            #unity_extractions_from_MaStR = pd.read_csv(csv_file, encoding='latin1', sep=",")
+            unity_extractions_from_MaStR = pd.read_csv(csv_file, encoding='cp1252', sep=",")
+    # delete first column
+    unity_extractions_from_MaStR = unity_extractions_from_MaStR.drop(unity_extractions_from_MaStR.columns[[0]], axis=1)
+    print(time.strftime("%H:%M:%S", time.localtime()) + ' : loading data : ' + str(filename_import))
+    try:
+        return unity_extractions_from_MaStR
+    except:
+        pass
+
 def check_complete_MaStR_xml_extractions():
     os.chdir(path_dict['static_input'])
     marker_operator = file_names_dict['filenames_csv_exports_MaStR']['dataframe_unity_file_name_sufix_with_operator']
